@@ -1,50 +1,50 @@
 import React, { useState } from 'react';
 import 'animate.css';
-import Product1 from '../assets/product1.jpg';
-import Product2 from '../assets/product2.png';
-import Product3 from '../assets/product3.jpg';
-import Product4 from '../assets/product4.jpg';
-import Product5 from '../assets/product5.png';
-import Product6 from '../assets/product6.jpg';
-import Product7 from '../assets/product7.webp';
-import Product8 from '../assets/product8.jpg';
-import Product9 from '../assets/product9.avif';
-import Product10 from '../assets/product10.jpg';
-import Product11 from '../assets/product11.webp';
-import Product12 from '../assets/product12.jpg';
-import Product13 from '../assets/product13.webp';
-import Product14 from '../assets/product14.jpg';
-import Product15 from '../assets/product15.webp';
-import Product16 from '../assets/product16.png';
+import Image1 from '../assets/image1.jpg';
+import Image2 from '../assets/image2.jpg';
+import Image3 from '../assets/image3.jpg';
+import Image4 from '../assets/image4.jpg';
+import Image5 from '../assets/image5.jpg';
+import Image6 from '../assets/image6.jpg';
+import Image7 from '../assets/image7.jpg';
+import Image8 from '../assets/image8.jpg';
+import Image9 from '../assets/image9.jpg';
+import Image10 from '../assets/image10.jpg';
+import Image11 from '../assets/image11.jpg';
+import Image12 from '../assets/image12.jpg';
+import Image13 from '../assets/image13.jpg';
+import Image14 from '../assets/image14.jpg';
+import Image15 from '../assets/image15.jpg';
+import Image16 from '../assets/image16.avif';
 
 const Categories = () => {
-    const [selectedCategory, setSelectedCategory] = useState('Skincare');
+    const [selectedCategory, setSelectedCategory] = useState('Self-Love');
     const [searchQuery, setSearchQuery] = useState('');
 
     const products = {
-        Skincare: [
-            { title: 'Serum Brightening', description: 'Helps reduce dark spots and brighten skin naturally.', price: 'Rp120.000', image: Product1 },
-            { title: 'Moisturizer Hydrating', description: 'Keeps skin moisturized all day with a lightweight formula.', price: 'Rp95.000', image: Product2 },
-            { title: 'SPF Sunscreen 50+', description: 'Protects your skin from harmful UV rays and pollution.', price: 'Rp110.000', image: Product3 },
-            { title: 'Face Mask', description: 'Hydrating and refreshing mask for your skin.', price: 'Rp75.000', image: Product4 },
+        'Self-Love': [
+            { title: 'You Are Enough', description: 'Embrace who you are and your worth. You are more than enough.', image: Image1 },
+            { title: 'Embrace Your Journey', description: 'Your path is unique, and every step counts towards your growth.', image: Image2 },
+            { title: 'Believe in Yourself', description: 'The first step to success is believing you are capable of achieving it.', image: Image3 },
+            { title: 'Self-Care is Essential', description: 'Take time to care for yourself, mind, body, and soul.', image: Image4 },
         ],
-        Makeup: [
-            { title: 'Lipstick Matte', description: 'Smooth matte finish with long-lasting color.', price: 'Rp90.000', image: Product5 },
-            { title: 'Mascara Waterproof', description: 'Volumizing mascara for long, defined lashes.', price: 'Rp80.000', image: Product6 },
-            { title: 'Blush On', description: 'Natural blush to brighten your face.', price: 'Rp60.000', image: Product7 },
-            { title: 'Eyeliner Gel', description: 'Precise eyeliner for bold eyes.', price: 'Rp70.000', image: Product8 },
+        'Positivity': [
+            { title: 'Every Day is a Fresh Start', description: 'Each day brings a new opportunity to grow and shine.', image: Image5 },
+            { title: 'Radiate Kindness', description: 'Spread kindness wherever you go; it creates a ripple effect.', image: Image6 },
+            { title: 'Focus on the Good', description: 'Look for the beauty in everything around you.', image: Image7 },
+            { title: 'Good Things are Coming', description: 'Trust that the universe has great things in store for you.', image: Image8 },
         ],
-        Haircare: [
-            { title: 'Shampoo Nourish', description: 'Nourishes hair and prevents dryness.', price: 'Rp100.000', image: Product9 },
-            { title: 'Hair Serum', description: 'Smoothens and adds shine to your hair.', price: 'Rp110.000', image: Product10 },
-            { title: 'Conditioner Repair', description: 'Repairs and strengthens damaged hair.', price: 'Rp90.000', image: Product11 },
-            { title: 'Hair Oil', description: 'Adds softness and shine to your hair.', price: 'Rp85.000', image: Product12 },
+        'Gratitude': [
+            { title: 'Be Thankful', description: 'Gratitude turns ordinary moments into blessings.', image: Image9 },
+            { title: 'Appreciate the Little Things', description: 'Happiness lies in the small moments of life.', image: Image10 },
+            { title: 'Gratitude is the Key to Joy', description: 'Gratitude opens the door to a life full of joy and abundance.', image: Image11 },
+            { title: 'Appreciate Yourself', description: 'Thank yourself for all the effort and strength you put into life.', image: Image12 },
         ],
-        Wellness: [
-            { title: 'Herbal Tea', description: 'Relaxing tea for stress relief.', price: 'Rp45.000', image: Product13 },
-            { title: 'Aromatherapy Diffuser', description: 'Soothing diffuser for your home.', price: 'Rp150.000', image: Product14 },
-            { title: 'Essential Oils', description: 'Natural oils for wellness and relaxation.', price: 'Rp75.000', image: Product15 },
-            { title: 'Vitamin C', description: 'Boost your immunity with Vitamin C.', price: 'Rp65.000', image: Product16 },
+        'Mindfulness': [
+            { title: 'Be Present', description: 'Live in the moment and embrace what is happening right now.', image: Image13 },
+            { title: 'Calm Your Mind', description: 'Peace comes from within, take time to find it.', image: Image14 },
+            { title: 'Let Go of Worries', description: 'Release what you cannot control and focus on peace.', image: Image15 },
+            { title: 'Live with Intention', description: 'Set clear intentions for what you want to manifest in your life.', image: Image16 },
         ],
     };
 
@@ -63,7 +63,7 @@ const Categories = () => {
                 <div className="mb-8 text-center">
                     <input
                         type="text"
-                        placeholder="Search products..."
+                        placeholder="Search affirmations..."
                         className="p-3 rounded-lg w-1/2 border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
@@ -72,7 +72,7 @@ const Categories = () => {
 
                 {/* Category Section */}
                 <div className="flex justify-center space-x-6 mb-8">
-                    {['Skincare', 'Makeup', 'Haircare', 'Wellness'].map(category => (
+                    {['Self-Love', 'Positivity', 'Gratitude', 'Mindfulness'].map(category => (
                         <button
                             key={category}
                             className={`text-lg font-bold p-3 rounded-md transition-colors duration-300 ${selectedCategory === category ? 'bg-purple-700 text-white' : 'text-purple-800'}`}
@@ -84,7 +84,7 @@ const Categories = () => {
                 </div>
 
                 <h2 className="text-4xl font-extrabold text-center mb-10 text-purple-900 drop-shadow-md">
-                    {selectedCategory} Products
+                    {selectedCategory} Affirmations
                 </h2>
 
                 {/* Products Grid */}
@@ -102,7 +102,6 @@ const Categories = () => {
                             />
                             <h3 className="text-lg font-semibold text-purple-700">{product.title}</h3>
                             <p className="text-sm text-gray-600 mt-2 mb-4">{product.description}</p>
-                            <p className="text-md font-bold text-gray-500">{product.price}</p>
                         </div>
                     ))}
                 </div>

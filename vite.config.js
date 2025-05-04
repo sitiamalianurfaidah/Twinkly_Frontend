@@ -6,10 +6,12 @@ export default defineConfig({
   server: {
     port: 5050,
     proxy: {
-      '/store': 'http://localhost:5000',
-      '/user': 'http://localhost:5000',
-      '/item': 'http://localhost:5000',
-      '/transaction': 'http://localhost:5000',
+      '/store': 'https://twinklybackend-production.up.railway.app',
+      '/user': 'https://twinklybackend-production.up.railway.app',
+      '/item': 'https://twinklybackend-production.up.railway.app',
+      '/transaction': 'https://twinklybackend-production.up.railway.app',
+      '/affirmation': 'https://twinklybackend-production.up.railway.app',
+
     },
   },
 })

@@ -1,36 +1,32 @@
 import React, { useEffect, useRef } from 'react';
-import Product1 from '../assets/product17.jpg';
-import Product2 from '../assets/product18.png';
-import Product3 from '../assets/product19.jpg';
-import Product4 from '../assets/product20.png';
+import Product1 from '../assets/image17.jpg';
+import Product2 from '../assets/image18.jpg';
+import Product3 from '../assets/image19.jpg';
+import Product4 from '../assets/image20.jpg';
 import 'animate.css';
 
-export default function FeaturedProducts() {
+export default function FeaturedAffirmations() {
     const containerRef = useRef(null);
 
-    const products = [
+    const affirmations = [
         {
-            title: 'Serum Brightening',
-            description: 'Helps reduce dark spots and brighten skin naturally.',
-            price: 'Rp120.000',
+            title: 'You Are Enough',
+            description: 'Believe in yourself, you are stronger than you think!',
             image: Product1
         },
         {
-            title: 'Moisturizer Hydrating',
-            description: 'Keeps skin moisturized all day with a lightweight formula.',
-            price: 'Rp95.000',
-            image: Product2
-        },
-        {
-            title: 'SPF Sunscreen 50+',
-            description: 'Protects your skin from harmful UV rays and pollution.',
-            price: 'Rp110.000',
+            title: 'Every Day is a Fresh Start',
+            description: 'Embrace each new day as a new opportunity to grow.',
             image: Product3
         },
         {
-            title: 'Lip Balm Natural Tint',
-            description: 'Moisturizing lip balm with a soft natural color.',
-            price: 'Rp45.000',
+            title: 'You Deserve the Best',
+            description: 'You are worthy of happiness, success, and love.',
+            image: Product2
+        },
+        {
+            title: 'Be Your Own Motivation',
+            description: 'Start from within and let your inner strength shine.',
             image: Product4
         }
     ];
@@ -47,7 +43,7 @@ export default function FeaturedProducts() {
             threshold: 0.2
         });
 
-        const cards = containerRef.current?.querySelectorAll('.product-card');
+        const cards = containerRef.current?.querySelectorAll('.affirmation-card');
         cards?.forEach(card => observer.observe(card));
 
         return () => {
@@ -62,27 +58,26 @@ export default function FeaturedProducts() {
         >
             <div className="max-w-7xl w-full flex flex-col items-center">
                 <h2 className="text-4xl font-extrabold text-center mb-10 text-purple-900 drop-shadow-md">
-                    Featured Products
+                    Featured Affirmations
                 </h2>
 
                 <div
                     ref={containerRef}
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full"
                 >
-                    {products.map((product, index) => (
+                    {affirmations.map((affirmation, index) => (
                         <div
                             key={index}
-                            className="product-card opacity-0 bg-white rounded-xl shadow-lg p-6 text-center transition duration-300 hover:shadow-2xl hover:-translate-y-1"
+                            className="affirmation-card opacity-0 bg-white rounded-xl shadow-lg p-6 text-center transition duration-300 hover:shadow-2xl hover:-translate-y-1"
                             style={{ animationDelay: `${index * 0.2}s` }}
                         >
                             <img
-                                src={product.image}
-                                alt={product.title}
+                                src={affirmation.image}
+                                alt={affirmation.title}
                                 className="w-full max-h-48 object-contain rounded-md mb-4"
                             />
-                            <h3 className="text-lg font-semibold text-purple-700">{product.title}</h3>
-                            <p className="text-sm text-gray-600 mt-2 mb-4">{product.description}</p>
-                            <p className="text-md font-bold text-gray-500">{product.price}</p>
+                            <h3 className="text-lg font-semibold text-purple-700">{affirmation.title}</h3>
+                            <p className="text-sm text-gray-600 mt-2 mb-4">{affirmation.description}</p>
                         </div>
                     ))}
                 </div>
