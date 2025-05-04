@@ -12,12 +12,11 @@ import TransactionList from '../pages/transaction/TransactionList';
 import AuthPage from '../pages/auth/AuthPage';
 
 export default function AppRoutes() {
-    const user = localStorage.getItem('user'); // Cek apakah user sudah login (berdasarkan data di localStorage)
-
     return (
         <Routes>
             {/* Jika user sudah login, arahkan ke Home */}
-            <Route path="/" element={user ? <Home /> : <Navigate to="/user/login" />} />
+            <Route path="/" element={<Home />} />
+
             
             {/* Auth */}
             <Route path="/auth" element={<AuthPage />} />
