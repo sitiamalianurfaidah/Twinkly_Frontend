@@ -14,7 +14,6 @@ import AuthPage from '../pages/auth/AuthPage';
 export default function AppRoutes() {
     return (
         <Routes>
-            {/* Jika user sudah login, arahkan ke Home */}
             <Route path="/" element={<Home />} />
 
             

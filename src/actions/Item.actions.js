@@ -1,4 +1,5 @@
 import axios from 'axios';
+const API = import.meta.env.VITE_API_URL;
 
 const backend_URI = 'http://localhost:5000';
 
