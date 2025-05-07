@@ -68,7 +68,7 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Featured Products */}
+            {/* Featured Affirmations */}
             <section
                 id="featured"
                 ref={featuredAffirmationsRef} // Menambahkan ref pada bagian Featured Products

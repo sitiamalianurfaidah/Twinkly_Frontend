@@ -20,8 +20,6 @@ export default function Navbar({ onSearch }) {
     const navItems = [
         { label: 'Home', to: '/', onClick: handleHomeClick }, // Menambahkan onClick
         { label: 'Profile', to: '/user/profile' },
-        { label: 'Login', to: '/user/login' },
-        { label: 'Register', to: '/user/register' },
     ];
 
     return (
