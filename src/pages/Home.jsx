@@ -2,8 +2,8 @@ import Navbar from '../components/Navbar';
 import FeaturedAffirmations from '../components/FeaturedAffirmations';
 import Categories from '../components/Categories';
 import Footer from '../components/Footer';
-import CreateAffirmation from "../components/createAffirmation";
 import AffirmationList from "../components/AffirmationList";
+import CreateAffirmation from "../components/createAffirmation";
 import { useEffect, useRef, useState } from 'react';
 import { getAllAffirmations } from '../actions/Affirmations.actions';
 
