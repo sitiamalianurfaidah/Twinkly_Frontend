@@ -30,6 +30,7 @@ export const getAllAffirmations = async () => {
     }
 };
 
+
 // Delete Affirmation
 export const deleteAffirmation = async (id) => {
     try {
