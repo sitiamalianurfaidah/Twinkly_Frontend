@@ -26,9 +26,6 @@ const Profile = () => {
                     <button className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-all duration-300">
                         Edit Profile
                     </button>
-                    <button className="px-6 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-all duration-300">
-                        Log Out
-                    </button>
                 </div>
             </div>
         </div>

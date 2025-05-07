@@ -2,18 +2,23 @@ import Navbar from '../components/Navbar';
 import FeaturedAffirmations from '../components/FeaturedAffirmations';
 import Categories from '../components/Categories';
 import Footer from '../components/Footer';
-import AffirmationList from "../components/AffirmationList";
+import AffirmationList from "../components/Feeds";
 import CreateAffirmation from "../components/createAffirmation";
 import { useEffect, useRef, useState } from 'react';
 import { getAllAffirmations } from '../actions/Affirmations.actions';
-
+import handleDelete from "../components/Feeds";
 
 export default function Home() {
     const featuredAffirmationsRef = useRef(null);
     const [affirmations, setAffirmations] = useState([]);
     const [loading, setLoading] = useState(true);
     const userId = "123e4567-e89b-12d3-a456-426614174000";
+    const [searchTerm, setSearchTerm] = useState('');
 
+    const handleSearch = (term) => {
+        setSearchTerm(term.toLowerCase());
+    };
+    
 
     const fetchAffirmations = async () => {
         setLoading(true);
@@ -28,9 +33,6 @@ export default function Home() {
         fetchAffirmations();
     }, []);
 
-    const handleSearch = (searchTerm) => {
-        console.log('Search term:', searchTerm);
-    };
 
     const scrollToFeaturedAffirmations = () => {
         if (featuredAffirmationsRef.current) {
@@ -40,7 +42,6 @@ export default function Home() {
             });
         }
     };
-    
 
     return (
         <div className="home font-sans text-purple-900">
@@ -74,7 +75,7 @@ export default function Home() {
                 ref={featuredAffirmationsRef} // Menambahkan ref pada bagian Featured Products
                 className="py-12 px-4 bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 animate__animated animate__fadeIn"
             >
-                <FeaturedAffirmations />
+                <FeaturedAffirmations searchTerm={searchTerm}/>
             </section>
 
             {/* Categories Section*/}
@@ -82,7 +83,7 @@ export default function Home() {
                 id="categories"
                 className="py-12 px-4 bg-gradient-to-br from-pink-100 via-indigo-100 to-purple-100 animate__animated animate__fadeIn animate__delay-1s"
             >
-                <Categories />
+                <Categories searchTerm={searchTerm}/>
             </section>
 
             {/*Form*/}
@@ -98,7 +99,7 @@ export default function Home() {
                 id="form"
                 className="py-12 px-4 bg-gradient-to-br from-pink-100 via-indigo-100 to-purple-100 animate__animated animate__fadeIn animate__delay-1s"
             >
-                <AffirmationList affirmations={affirmations} loading={loading} />
+                <AffirmationList affirmations={affirmations} loading={loading} onDelete={handleDelete} searchTerm={searchTerm}/>
                 </section>
 
             {/* Footer Section */}
