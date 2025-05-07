@@ -3,7 +3,7 @@ import FeaturedAffirmations from '../components/FeaturedAffirmations';
 import Categories from '../components/Categories';
 import Footer from '../components/Footer';
 import AffirmationList from "../components/Feeds";
-import CreateAffirmation from "../components/createAffirmation";
+import CreateAffirmation from "../components/CreateAffirmation";
 import { useEffect, useRef, useState } from 'react';
 import { getAllAffirmations } from '../actions/Affirmations.actions';
 import { deleteAffirmation } from '../actions/Affirmations.actions';
