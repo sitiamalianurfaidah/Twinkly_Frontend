@@ -6,7 +6,7 @@ export default function AppRoutes() {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/user/profile" element={<Profile />} />
+            <Route path="/user/about" element={<Profile />} />
         </Routes>
     );
 }

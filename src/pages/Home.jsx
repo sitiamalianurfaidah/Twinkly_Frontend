@@ -6,10 +6,11 @@ import AffirmationList from "../components/Feeds";
 import CreateAffirmation from "../components/createAffirmation";
 import { useEffect, useRef, useState } from 'react';
 import { getAllAffirmations } from '../actions/Affirmations.actions';
-import handleDelete from "../components/Feeds";
+import { deleteAffirmation } from '../actions/Affirmations.actions';
 
 export default function Home() {
     const featuredAffirmationsRef = useRef(null);
+    const formRef = useRef(null);
     const [affirmations, setAffirmations] = useState([]);
     const [loading, setLoading] = useState(true);
     const userId = "123e4567-e89b-12d3-a456-426614174000";
@@ -17,8 +18,7 @@ export default function Home() {
 
     const handleSearch = (term) => {
         setSearchTerm(term.toLowerCase());
-    };
-    
+    };    
 
     const fetchAffirmations = async () => {
         setLoading(true);
@@ -33,7 +33,23 @@ export default function Home() {
         fetchAffirmations();
     }, []);
 
-
+    const handleDelete = async (id) => {
+        const confirmDelete = window.confirm("Apakah kamu yakin ingin menghapus affirmation ini?");
+        
+        if (confirmDelete) {
+            const result = await deleteAffirmation(id); // Menghapus affirmation via API
+    
+            if (result.success) {
+                const updated = affirmations.filter(item => item.id !== id); // Update state setelah penghapusan sukses
+                setAffirmations(updated);
+            } else {
+                alert("Gagal menghapus affirmation.");
+            }
+        }
+    };
+    
+    
+    
     const scrollToFeaturedAffirmations = () => {
         if (featuredAffirmationsRef.current) {
             featuredAffirmationsRef.current.scrollIntoView({
@@ -42,6 +58,16 @@ export default function Home() {
             });
         }
     };
+
+    const scrollToForm = () => {
+        if (formRef.current) {
+            formRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        }
+    };
+    
 
     return (
         <div className="home font-sans text-purple-900">
@@ -89,6 +115,7 @@ export default function Home() {
             {/*Form*/}
             <section
                 id="form"
+                ref={formRef}
                 className="py-12 px-4 bg-gradient-to-br from-pink-100 via-indigo-100 to-purple-100 animate__animated animate__fadeIn animate__delay-1s"
             >
                 <CreateAffirmation userId={userId} onSuccess={fetchAffirmations} />
@@ -103,7 +130,7 @@ export default function Home() {
                 </section>
 
             {/* Footer Section */}
-            <Footer />
+            <Footer onCreateClick={scrollToForm}/>
         </div>
     );
 }

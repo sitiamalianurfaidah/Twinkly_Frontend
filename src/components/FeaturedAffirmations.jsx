@@ -5,7 +5,7 @@ import Product3 from '../assets/image19.jpg';
 import Product4 from '../assets/image20.jpg';
 import 'animate.css';
 
-export default function FeaturedAffirmations() {
+export default function FeaturedAffirmations({searchTerm}) {
     const containerRef = useRef(null);
 
     const affirmations = [
@@ -31,6 +31,36 @@ export default function FeaturedAffirmations() {
         }
     ];
 
+    const filteredAffirmations = affirmations.filter(affirmation =>
+        affirmation.title.toLowerCase().includes(searchTerm) ||
+        affirmation.description.toLowerCase().includes(searchTerm)
+    );
+
+    const highlightText = (text, term) => {
+        if (!term) return text;
+        const parts = text.split(new RegExp(`(${term})`, 'gi'));
+        return parts.map((part, index) =>
+            part.toLowerCase() === term.toLowerCase()
+                ? <span key={index} className="bg-yellow-200">{part}</span>
+                : part
+        );
+    };
+
+    useEffect(() => {
+        if (searchTerm && filteredAffirmations.length > 0) {
+            // Hapus semua highlight sebelumnya
+            const allCards = document.querySelectorAll('.affirmation-card');
+            allCards.forEach(card => card.classList.remove('bg-yellow-100'));
+    
+            // Scroll & highlight card pertama yang cocok
+            const firstMatch = allCards[0];
+            if (firstMatch) {
+                firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                firstMatch.classList.add('bg-yellow-100');
+            }
+        }
+    }, [searchTerm, filteredAffirmations]);    
+
     useEffect(() => {
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -51,6 +81,7 @@ export default function FeaturedAffirmations() {
         };
     }, []);
 
+
     return (
         <section
             id="featured"
@@ -65,19 +96,20 @@ export default function FeaturedAffirmations() {
                     ref={containerRef}
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full"
                 >
-                    {affirmations.map((affirmation, index) => (
+                    {filteredAffirmations.map((affirmation, index) => (
                         <div
                             key={index}
-                            className="affirmation-card opacity-0 bg-white rounded-xl shadow-lg p-6 text-center transition duration-300 hover:shadow-2xl hover:-translate-y-1"
+                            className="affirmation-card opacity-0 bg-white rounded-xl shadow-lg p-6 text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
                             style={{ animationDelay: `${index * 0.2}s` }}
+                            data-title={affirmation.title}
                         >
                             <img
                                 src={affirmation.image}
                                 alt={affirmation.title}
                                 className="w-full max-h-48 object-contain rounded-md mb-4"
                             />
-                            <h3 className="text-lg font-semibold text-purple-700">{affirmation.title}</h3>
-                            <p className="text-sm text-gray-600 mt-2 mb-4">{affirmation.description}</p>
+                            <h3 className="text-lg font-semibold text-purple-700">{highlightText(affirmation.title, searchTerm)}</h3>
+                            <p className="text-sm text-gray-600 mt-2 mb-4">{highlightText(affirmation.description, searchTerm)}</p>
                         </div>
                     ))}
                 </div>

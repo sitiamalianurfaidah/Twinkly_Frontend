@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'animate.css';
 import Image1 from '../assets/image1.jpg';
 import Image2 from '../assets/image2.jpg';
@@ -53,8 +53,25 @@ const Categories = () => {
     };
 
     const filteredProducts = products[selectedCategory].filter(product =>
-        product.title.toLowerCase().includes(searchQuery.toLowerCase())
+        product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
+    useEffect(() => {
+        const firstMatch = document.querySelector(`[data-title*="${searchQuery.toLowerCase()}"]`);
+        if (firstMatch) {
+            firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            firstMatch.classList.add('bg-yellow-100');
+        
+            // Remove highlight after 3s
+            const timeout = setTimeout(() => {
+                firstMatch.classList.remove('bg-yellow-100');
+            }, 3000);
+        
+            return () => clearTimeout(timeout);
+            }
+        }, [searchQuery, filteredProducts]);
+        
 
     return (
         <section className="w-full py-20 px-6 bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100">
@@ -94,6 +111,7 @@ const Categories = () => {
                             key={index}
                             className="bg-white rounded-xl shadow-lg p-6 text-center transition duration-300 hover:shadow-2xl hover:-translate-y-1 animate__animated animate__fadeInUp"
                             style={{ animationDelay: `${index * 0.2}s` }}
+                            data-title={product.title.toLowerCase()}
                         >
                             <img
                                 src={product.image}
