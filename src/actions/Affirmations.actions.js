@@ -30,17 +30,6 @@ export const getAllAffirmations = async () => {
     }
 };
 
-// Get Affirmations by User ID
-export const getAffirmationsByUserId = async (user_id) => {
-    try {
-        const response = await axios.get(`${API}/affirmations/user/${user_id}`);
-        return baseApiResponse(response.data.payload, true);
-    } catch (error) {
-        console.error("Get Affirmations by User ID Error:", error);
-        return baseApiResponse(null, false);
-    }
-};
-
 // Delete Affirmation
 export const deleteAffirmation = async (id) => {
     try {
